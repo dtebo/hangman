@@ -26,6 +26,8 @@ class Hangman:
 
                 if result == "Exit":
                     current_game.status = "quitted"
+                elif result == "Start Game":
+                    current_game.status = "playing"
 
                 if event.type == pygame.ACTIVEEVENT:
                     if event.gain:  # Window is minimized or loses focus
