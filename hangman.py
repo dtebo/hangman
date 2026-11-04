@@ -22,7 +22,10 @@ class Hangman:
                 if event.type == pygame.QUIT:
                     current_game.status = "quitted"
 
-                game_menu.handle_input(event) # Handle menu input
+                result = game_menu.handle_input(event) # Handle menu input
+
+                if result == "Exit":
+                    current_game.status = "quitted"
 
                 if event.type == pygame.ACTIVEEVENT:
                     if event.gain:  # Window is minimized or loses focus
@@ -38,6 +41,8 @@ class Hangman:
 
             dt = clock.tick(60) / 1000
 
-        pygame.quit()
+        if current_game.status == "quitted":
+            pygame.mixer.music.stop()  # Stop the music when quitting
+        pygame.quit() # Quit the game when the status is "quitted"
 
 hangman_game = Hangman()
