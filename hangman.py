@@ -6,9 +6,8 @@ import random
 
 class Hangman:
     def __init__(self):
-        background = pygame.image.load(".\\images\\backgrounds\\menu_background.png")
         current_game = game.Game("Hangman")
-        print(f"Selected word: {current_game.selected_word}")  # Debugging line to show the selected word
+        background = pygame.image.load(".\\images\\backgrounds\\menu_background.png")
         pygame.display.set_caption(current_game.name)
         pygame.init()
         screen = pygame.display.set_mode((1280,720))
@@ -45,6 +44,9 @@ class Hangman:
 
         if current_game.status == "quitted":
             pygame.mixer.music.stop()  # Stop the music when quitting
+        elif current_game.status == "playing":
+            current_game.load_game_screen(screen)
+
         pygame.quit() # Quit the game when the status is "quitted"
 
 hangman_game = Hangman()
