@@ -19,13 +19,10 @@ class Game:
         pygame.mixer.music.load(audio_file, "mp3")
         pygame.mixer.music.play(-1)  # Play the audio in a loop
 
-    def load_game(self, player: Player):
+    def load_game(self, screen, background):
         # Load the game
         player.score = 0
         player.name = "Player 1"  # Set the player's name
 
-        self.load_game_screen()  # Load the game screen
-        
-    def load_game_screen(self, screen):
-        # Load the game screen
-        pass
+        screen.blit(background, (0, 0))
+        #pygame.display.flip()

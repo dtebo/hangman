@@ -7,7 +7,10 @@ class Menu:
         self.options = ["Start Game", "Options", "Exit"]
         self.selected_option = 0
 
-    def draw(self, screen):
+    def draw(self, screen, show_menu=True):
+        if not show_menu:
+            return
+
         # Draw the menu options on the screen
         for i, option in enumerate(self.options):
             color = (0, 50, 225) if i == self.selected_option else (80, 80, 80)
