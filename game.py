@@ -1,5 +1,5 @@
 import random
-import menu
+import board
 import player
 import pygame
 
@@ -25,4 +25,6 @@ class Game:
         player.name = "Player 1"  # Set the player's name
 
         screen.blit(background, (0, 0))
-        #pygame.display.flip()
+
+        Board = board.Board(self.selected_word)  # Create a Board instance with the selected word
+        Board.display()
