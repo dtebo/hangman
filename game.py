@@ -13,6 +13,7 @@ class Game:
         self.time_remaining = 120 #Number of seconds for the game
         self.status = status #Game status: playing, won, lost, quitted
         self.selected_word = random.choice(self.word_list) #The word to guess
+        self.board = None
 
     def load_menu_audio(self, audio_file):
         pygame.mixer.init()
@@ -26,5 +27,5 @@ class Game:
 
         screen.blit(background, (0, 0))
 
-        Board = board.Board(self.selected_word)  # Create a Board instance with the selected word
-        Board.display()
+        self.board = board.Board(self.selected_word)  # Create a Board instance with the selected word
+        self.board.display(screen)  # Display the board on the screen
