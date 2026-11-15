@@ -1,5 +1,6 @@
 import random
 import board
+import effect
 import player
 import pygame
 
@@ -14,6 +15,7 @@ class Game:
         self.status = status #Game status: playing, won, lost, quitted
         self.selected_word = random.choice(self.word_list) #The word to guess
         self.board = None
+        self.effect = None
 
     def load_menu_audio(self, audio_file):
         pygame.mixer.init()
@@ -29,3 +31,11 @@ class Game:
 
         self.board = board.Board(self.selected_word)  # Create a Board instance with the selected word
         self.board.display(screen)  # Display the board on the screen
+
+        self.effect = effect.Effect(screen)  # Create an Effect instance
+        self.effect.start(
+            "Time remaining:",
+            (255, 255, 255),
+            (screen.get_width() // 2, 40),
+            self.time_remaining,
+        )

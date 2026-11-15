@@ -43,6 +43,9 @@ class Hangman:
             if not show_menu and current_game.board is not None:
                 current_game.board.display(screen)
 
+            if current_game.effect is not None:
+                current_game.effect.update()
+
             game_menu.draw(screen, show_menu)  # Draw the menu if show_menu is True
 
             pygame.display.update()
