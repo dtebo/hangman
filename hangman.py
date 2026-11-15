@@ -22,6 +22,9 @@ class Hangman:
                 if event.type == pygame.QUIT:
                     current_game.status = "quitted"
 
+                if current_game.effect is not None:
+                    current_game.effect.draw_particles(screen)
+
                 result = game_menu.handle_input(event) # Handle menu input
 
                 if result == "Exit":

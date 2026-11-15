@@ -18,4 +18,3 @@ class Board:
         text_rect = text.get_rect(center=(screen.get_width() // 2 + 200, screen.get_height() // 2))
 
         screen.blit(text, text_rect)
-        pygame.display.update()
