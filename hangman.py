@@ -1,6 +1,6 @@
 import pygame
 import game
-from effect import Snowflake
+from effect import Particle
 import menu
 import player
 import random
@@ -15,7 +15,7 @@ class Hangman:
         clock = pygame.time.Clock()
         show_menu = True  # Flag to control the menu display
         game_menu = menu.Menu()
-        snowflakes = [Snowflake(screen) for _ in range(150)]
+        particles = [Particle(screen) for _ in range(150)]
 
         current_game.load_menu_audio(".\\audio\\menumusic.mp3")  # Load and play menu audio
 
@@ -43,9 +43,9 @@ class Hangman:
             screen.blit(background, (0, 0))
 
             if not show_menu:
-                for snowflake in snowflakes:
-                    snowflake.update()
-                    snowflake.draw(screen)
+                for particle in particles:
+                    particle.update()
+                    particle.draw(screen)
 
             if not show_menu and current_game.board is not None:
                 current_game.board.display(screen)
