@@ -1,9 +1,8 @@
 import pygame
 import game
 from effect import Particle
+from random import randint
 import menu
-import player
-import random
 
 class Hangman:
     def __init__(self):
@@ -15,7 +14,7 @@ class Hangman:
         clock = pygame.time.Clock()
         show_menu = True  # Flag to control the menu display
         game_menu = menu.Menu()
-        particles = [Particle(screen) for _ in range(150)]
+        particles = [Particle(screen) for _ in range(15)]
 
         current_game.load_menu_audio(".\\audio\\menumusic.mp3")  # Load and play menu audio
 
@@ -44,6 +43,8 @@ class Hangman:
 
             if not show_menu:
                 for particle in particles:
+                    particle.center_x = randint(100, 300)
+                    particle.center_y = randint(100, 400)
                     particle.update()
                     particle.draw(screen)
 
