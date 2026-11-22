@@ -12,6 +12,7 @@ class Hangman:
         pygame.init()
         screen = pygame.display.set_mode((1280,720))
         clock = pygame.time.Clock()
+        dt = 0.0
         show_menu = True  # Flag to control the menu display
         game_menu = menu.Menu()
         particles = [Particle(screen) for _ in range(15)]
@@ -43,9 +44,7 @@ class Hangman:
 
             if not show_menu:
                 for particle in particles:
-                    particle.center_x = randint(100, 300)
-                    particle.center_y = randint(100, 400)
-                    particle.update()
+                    particle.update(dt)
                     particle.draw(screen)
 
             if not show_menu and current_game.board is not None:
@@ -58,7 +57,7 @@ class Hangman:
 
             pygame.display.update()
 
-            dt = clock.tick(60) / 1000
+            dt = clock.tick(60) / 1000.0
 
         if current_game.status == "quitted":
             pygame.mixer.music.stop()  # Stop the music when quitting

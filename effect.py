@@ -41,12 +41,12 @@ class Particle:
           self.x = 0
           self.y = 0
           self.radius = 200
-          self.center_x = 200
-          self.center_y = 154
-          self.angle = random.uniform(0, math.tau)
-          self.omega = 0.02
+          self.center_x = screen.get_width() // 1.5
+          self.center_y = screen.get_height() // 1.8
+          self.angle = random.uniform(0, 2 * math.pi)
+          self.angular_velocity = math.radians(90)
           self.size = random.randint(1, 4)
-          self.particle_color = (0, 255, 125)
+          self.particle_color = (0, 50, 190)
 
      def draw(self, screen):
         pygame.draw.circle(
@@ -56,7 +56,9 @@ class Particle:
             self.size,
         )
 
-     def update(self):
-         self.angle = (self.angle + self.omega) % math.tau
+     def update(self, dt):
+         self.angle += self.angular_velocity * dt / 4
+         self.angle %= 2 * math.pi
          self.x = self.center_x + self.radius * math.cos(self.angle)
          self.y = self.center_y + self.radius * math.sin(self.angle)
+         
